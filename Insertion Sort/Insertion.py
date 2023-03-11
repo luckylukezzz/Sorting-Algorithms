@@ -2,6 +2,10 @@
 # run the code 
 #input the number list to be sorted with spaces
 
+#----------------------------------------------------------------
+# import time
+# start_time = time.time()
+
 
 
 def insertionSort(arr):
@@ -18,4 +22,6 @@ def insertionSort(arr):
 
 
 list1=list(map(int,input().strip().split()))
-print(insertionSort(list1))
+print(*insertionSort(list1))
+
+#print("--- %s seconds ---" % (time.time() - start_time))
