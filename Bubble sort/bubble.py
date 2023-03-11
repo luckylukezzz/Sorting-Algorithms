@@ -30,8 +30,9 @@ def bubbleSort2(arr):
         for i in range(1,nonSortedArea):
             if arr[i-1]>arr[i]:
                 arr[i],arr[i-1]=arr[i-1],arr[i]
-                count=1 
-        nonSortedArea-=1        
+                count=1
+                limit = i
+        nonSortedArea=limit        
         if not count :
             break 
     return arr
