@@ -3,7 +3,7 @@
 using namespace std;
 int* createRandomArray(int length) {
     int* arr = new int[length];
-    srand(time(0)); // Seed the random number generator with the current time
+    srand(time(0)); 
     for (int i = 0; i < length; i++) {
         arr[i] = rand() % 100; // Generate random numbers between 0 and 99
     }

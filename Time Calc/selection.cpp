@@ -3,7 +3,7 @@
 using namespace std;
 int* createRandomArray(int length) {
     int* arr = new int[length];
-    srand(time(0)); // Seed the random number generator with the current time
+    srand(time(0));
     for (int i = 0; i < length; i++) {
         arr[i] = rand() % 100; // Generate random numbers between 0 and 99
     }
@@ -21,19 +21,16 @@ void swap(int *xp, int *yp)
 
 void selectionSort(int arr[], int n)
 {
-    int i, j, min_idx;
+    int i, j, minIndex;
 
-    // One by one move boundary of unsorted subarray
     for (i = 0; i < n - 1; i++)
     {
-        // Find the minimum element in unsorted array
-        min_idx = i;
+        minIndex = i;
         for (j = i + 1; j < n; j++)
-            if (arr[j] < arr[min_idx])
-                min_idx = j;
+            if (arr[j] < arr[minIndex])
+                minIndex = j;
 
-        // Swap the found minimum element with the first element
-        swap(&arr[min_idx], &arr[i]);
+        swap(&arr[minIndex], &arr[i]);
     }
 }
 
