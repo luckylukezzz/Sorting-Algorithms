@@ -1,70 +1,58 @@
 #include <iostream>
 using namespace std;
 
-void merge(int x[],int y[],int arr[],int sx,int sy){
-    int lenx=sx;
-    int leny=sy;
-    int i,j,k=0;
+void merge( int arr[],int start,int end,int mid){
+    int temp[end-start+1];
+    int i=start;
+    int j=mid+1;
+    int k=0;
 
-    while (i<lenx && j<leny){
-        if (x[i]<y[j]){
-            arr[k]=x[i];
-            i++;
-            k++;
-
+    while (i <= mid && j <= end){
+        if (arr[i] < arr[j]){
+            temp[k++]=arr[i++];
         }
         else{
-            arr[k]=y[j];
-            j++;
-            k++;
+            temp[k++] = arr[j++];
         }
-    
+
     }
-    while (i<lenx){
-       arr[k]=x[i];
-            i++;
-            k++;
+    while (i <= mid){
+       temp[k++] = arr[i++];
     }
-    while (j<leny){
-       arr[k]=y[j];
-            j++;
-            k++;
+    while (j <= end){
+       temp[k++] = arr[j++];
+    }
+    i=start;
+    for (auto j:temp){
+       arr[i++]=j;
+
     }
 }
 
-// void mergeSort(int arr[]){
-//     int lenarr =sizeof(arr)/sizeof(int);
-//     if (lenarr<2){
-//         return ;} 
-//     int lenx=lenarr/2;
-//     int x[lenx];
-//     int y[lenarr-lenx];
-//     for (int i=0;i<lenx;i++){
-
-//         x[i]=arr[i];
-//     }
-//      for (int i=lenx;i<lenarr;i++){
-
-//         y[i]=arr[i];
-//     }
-//     mergeSort(x);
-//     mergeSort(y);
-//     merge(x,y,arr); 
-// }
+ void mergeSort(int arr[],int start,int end) {
+     if (start < end) {
+         int mid = (start + end) / 2;
+         mergeSort(arr, start, mid);
+         mergeSort(arr, mid + 1, end);
+         merge(arr, start, end, mid);
+     }
+ }
 
 int main(){
 
 
-int arr[]={8,9,77,66,99};
-int x[]={1,4,5};
-int y[]={2,3};
-merge(x,y,arr,3,2);
+    int arr[]={70,9,500,66,99};
 
-for (int i=0;i<sizeof(arr)/sizeof(int);i++){
+    mergeSort(arr,0,4);
 
-    cout<<arr[i]<<" ";
-}
 
-return 0;
+
+
+    for (int i=0;i<sizeof(arr)/sizeof(int);i++){
+
+        cout<<arr[i]<<" ";
+    }
+
+    return 0;
 
 }
