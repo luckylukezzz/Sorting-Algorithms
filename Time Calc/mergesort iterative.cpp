@@ -54,15 +54,40 @@ void mergeSort(int a[],int n){
 
 }
 int main(){
-        
-   int arr[]={70,9,500,1500,99};
+    clock_t start;
+    clock_t end;
 
-   mergeSort(arr,5);
+    int arrLen[]={5000,7000,9000,15000,20000};
+    for (int len:arrLen) {
+        start = clock();
 
-   for (int i=0;i<sizeof(arr)/sizeof(int);i++){
+        int my_array[len];
+        srand(time(0)); // Seed the random number generator with the current time
 
-       cout<<arr[i]<<" ";
-   }
+        for (int i = 0; i < len; i++) {
+            my_array[i] = rand() % 100 + 1; // Replace 1 and 100 with the range of values you want
+        }
+
+
+
+        mergeSort(my_array, len);
+        end = clock();
+
+        double timetakenSort = (end - start) / (double) CLOCKS_PER_SEC;
+        cout << "total elements in array: " << len << endl;
+        cout << "time taken is: " << fixed << timetakenSort  << "ms" << endl << endl;
+    }
+//    int arr[]={70,9,500,1500,99};
+//
+//    mergeSort(arr,5);
+//
+//
+//
+//
+//    for (int i=0;i<sizeof(arr)/sizeof(int);i++){
+//
+//        cout<<arr[i]<<" ";
+//    }
 
     return 0;
 
