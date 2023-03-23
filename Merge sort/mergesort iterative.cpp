@@ -57,7 +57,7 @@ int main(){
         
    int arr[]={70,9,500,1500,99};
 
-   mergeSort(arr,5);
+   mergeSort(arr,5);   //give the array and length of array
 
    for (int i=0;i<sizeof(arr)/sizeof(int);i++){
 
